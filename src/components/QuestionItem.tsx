@@ -8,14 +8,18 @@ interface Props {
   questionIndex: number;
   question: string;
   options: Array<string>;
-  onClickAnswer: (e: any) => void;
+  selected: string,
+  onClickAnswer: (arg0: string) => void;
+  onClickNext: () => void
 }
 
 const QuestionItem = ({
   questionIndex, 
   question, 
   options, 
-  onClickAnswer
+  selected,
+  onClickAnswer,
+  onClickNext
 }: Props): ReactElement => {
   return (
     <>
@@ -25,11 +29,14 @@ const QuestionItem = ({
       {options.map((option: string) => (
         <Box mt={2} key={option}>
           <Button 
-            onClick={onClickAnswer} 
-            variant="contained"
+            onClick={() => onClickAnswer(option)} 
+            variant={selected === option ? "contained" : "outlined"}
           >{decode(option)}</Button>
         </Box>
       ))}
+      {selected.length > 0 && <Box mt={10} textAlign={"right"}>
+        <Button onClick={onClickNext}>{`Next ->`}</Button>
+      </Box>}
     </>
   );
 };

@@ -22,17 +22,24 @@ const Question = (): ReactElement => {
   const [questionIndex, setQuestionIndex] = useState<number>(0);
   const [options, setOptions] = useState<Array<string>>([]);
   const [score, setScore] = useState<number>(0);
+  const [selected, setSelected] = useState<string>("");
 
   const navigate = useNavigate();
   const { response, loading } = useAxios({ url: apiUrl });
 
   // TODO: type 변경
-  const handleClickAnswer = (e: any) => {
+  const handleClickAnswer = (option: string) => {
+    setSelected(option);
+  };
+
+  const handleClickNext = () => {
     const question = response.results[questionIndex];
 
-    if (e.target.textContent === question.correct_answer) {
+    if (selected === question.correct_answer) {
       setScore(prev => prev + 1);
     }
+
+    setSelected("");
 
     if (questionIndex + 1 < response.results.length) {
       setQuestionIndex(questionIndex + 1);
@@ -40,6 +47,8 @@ const Question = (): ReactElement => {
       navigate(`/result`);
     }
   };
+
+  
 
   useEffect(() => {
     if (response.results?.length) {
@@ -67,7 +76,9 @@ const Question = (): ReactElement => {
         questionIndex={questionIndex}
         question={response?.results[questionIndex]?.question}
         options={options}
+        selected={selected}
         onClickAnswer={handleClickAnswer}
+        onClickNext={handleClickNext}
       />      
     </Box>
   );
