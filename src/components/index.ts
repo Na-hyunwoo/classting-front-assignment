@@ -1,4 +1,6 @@
 import SelectField from "./SelectField";
 import FormTextField from "./FormTextField";
+import QuestionItem from "./QuestionItem";
 
-export { SelectField, FormTextField };
+
+export { SelectField, FormTextField, QuestionItem };

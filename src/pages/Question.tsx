@@ -1,5 +1,4 @@
 import React, { ReactElement, useEffect, useState } from "react";
-import { Button, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { useRecoilState } from "recoil";
 import { useAxios } from "../hooks";
@@ -8,7 +7,7 @@ import { SettingType } from "../types";
 import Loading from "./Loading";
 import { getRandomInt } from "../utils";
 import { useNavigate } from "react-router-dom";
-import { decode } from "html-entities";
+import { QuestionItem } from "../components";
 
 
 
@@ -47,13 +46,13 @@ const Question = (): ReactElement => {
   useEffect(() => {
     if (response.results?.length) {
       const question = response.results[questionIndex];
-      let answers = [...question.incorrect_answers];
-      answers.splice(
+      let _options = [...question.incorrect_answers];
+      _options.splice(
         getRandomInt(question.incorrect_answers.length),
         0,
         question.correct_answer
       );
-      setOptions(answers);
+      setOptions(_options);
     }
   }, [response, questionIndex]);
 
@@ -65,19 +64,13 @@ const Question = (): ReactElement => {
 
   return (
     <Box>
-      <Typography variant="h4">Questions {questionIndex + 1}</Typography>
-      <Typography mt={5}>{decode(response.results[questionIndex].question)}</Typography>
-      {options.map((data) => (
-        <Box mt={2} key={data}>
-          <Button 
-            onClick={handleClickAnswer} 
-            variant="contained"
-          >{decode(data)}</Button>
-        </Box>
-      ))}
-      <Box mt={5}>
-        {`Score: ${score} / ${response.results.length}`}
-      </Box>
+      <QuestionItem 
+        questionIndex={questionIndex}
+        question={response?.results[questionIndex].question}
+        options={options}
+        onClickAnswer={handleClickAnswer}
+        score={score}
+      />      
     </Box>
   );
 };
