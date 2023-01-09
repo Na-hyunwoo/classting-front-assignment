@@ -5,6 +5,10 @@ export const DIFFICULTIES = [
 ];
 
 export const TYPES = [
-  {id: "multiple choice", name: "Multiple Choice"},
+  {id: "multiple", name: "Multiple Choice"},
   {id: "boolean", name: "True/False"},
 ]
+
+export const getRandomInt = (max: number) => {
+  return Math.floor(Math.random() * max);
+};

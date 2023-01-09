@@ -5,14 +5,16 @@ import { Box } from "@mui/system";
 import { useAxios } from "../hooks";
 import { Loading, Error} from "./";
 import { DIFFICULTIES, TYPES } from "../utils";
-
+import { useNavigate } from "react-router-dom";
 
 const Setting = (): ReactElement => {
   const { response, error, loading } = useAxios({ url: "/api_category.php" });
-  
+  const navigate = useNavigate()
+
   // TODO: event type 수정하기
   const handleSubmit = (e: any) => {
     e.preventDefault();
+    navigate("/question");
   };
 
   if (loading) { return (<Loading />) }
