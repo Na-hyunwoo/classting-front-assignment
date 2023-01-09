@@ -2,6 +2,7 @@ import React, { ReactElement } from "react";
 import { Button, Typography } from "@mui/material";
 import { decode } from "html-entities";
 import { Box } from "@mui/system";
+import { motion } from "framer-motion";
 
 // TODO: type 변경하기 
 interface Props {

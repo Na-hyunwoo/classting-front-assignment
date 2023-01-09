@@ -7,7 +7,7 @@ function App() {
   return (
     <Router>
       <Container maxWidth="sm">
-        <Box textAlign="center" mt={5}>
+        <Box textAlign="center" mt={10}>
           <Routes>
             <Route path="/" element={<Setting />} />
             <Route path="/question" element={<Question />} />

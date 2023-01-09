@@ -7,8 +7,9 @@ import { SettingType } from "../types";
 import Loading from "./Loading";
 import { getRandomInt } from "../utils";
 import { useNavigate } from "react-router-dom";
-import { QuestionItem } from "../components";
+import { Modal, QuestionItem } from "../components";
 import Empty from "./Empty";
+import { AnimatePresence } from "framer-motion";
 
 const Question = (): ReactElement => {
   const [settings, setSettings] = useRecoilState<SettingType>(settingState);
@@ -23,6 +24,7 @@ const Question = (): ReactElement => {
   const [options, setOptions] = useState<Array<string>>([]);
   const [score, setScore] = useState<number>(0);
   const [selected, setSelected] = useState<string>("");
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
 
   const navigate = useNavigate();
   const { response, loading } = useAxios({ url: apiUrl });
@@ -42,12 +44,23 @@ const Question = (): ReactElement => {
     setSelected("");
 
     if (questionIndex + 1 < response.results.length) {
-      setQuestionIndex(questionIndex + 1);
+      setModalOpen(true);
     } else {
       navigate(`/result`);
     }
   };
 
+  useEffect(() => {
+    if (modalOpen) {
+      const timer = setTimeout(
+        () => {setModalOpen(false)}
+        , 1000);
+
+      setQuestionIndex(questionIndex + 1);
+      
+      return (() => clearTimeout(timer));
+    }
+  }, [modalOpen]);
   
 
   useEffect(() => {
@@ -80,6 +93,19 @@ const Question = (): ReactElement => {
         onClickAnswer={handleClickAnswer}
         onClickNext={handleClickNext}
       />      
+      <AnimatePresence
+        initial={false}
+        onExitComplete={() => null}
+      >
+        {modalOpen && (
+          <Modal 
+            text={selected === response?.results[questionIndex].correct_answer
+              ? "정답입니다."
+              : "오답입니다."
+            } 
+            handleClose={() => setModalOpen(false)} 
+          />)}
+      </AnimatePresence>
     </Box>
   );
 };
