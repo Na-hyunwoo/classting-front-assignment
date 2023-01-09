@@ -25,6 +25,7 @@ const Question = (): ReactElement => {
   const [score, setScore] = useState<number>(0);
   const [selected, setSelected] = useState<string>("");
   const [modalOpen, setModalOpen] = useState<boolean>(false);
+  const [isAnswer, setIsAnswer] = useState<boolean>(false);
 
   const navigate = useNavigate();
   const { response, loading } = useAxios({ url: apiUrl });
@@ -36,9 +37,13 @@ const Question = (): ReactElement => {
 
   const handleClickNext = () => {
     const question = response.results[questionIndex];
+    console.log(selected, question.correct_answer);
 
     if (selected === question.correct_answer) {
+      setIsAnswer(true);
       setScore(prev => prev + 1);
+    } else {
+      setIsAnswer(false);
     }
 
     setSelected("");
@@ -99,12 +104,10 @@ const Question = (): ReactElement => {
       >
         {modalOpen && (
           <Modal 
-            text={selected === response?.results[questionIndex].correct_answer
-              ? "정답입니다."
-              : "오답입니다."
-            } 
+            text={isAnswer ? "정답입니다." : "오답입니다."} 
             handleClose={() => setModalOpen(false)} 
-          />)}
+          />
+        )}
       </AnimatePresence>
     </Box>
   );
