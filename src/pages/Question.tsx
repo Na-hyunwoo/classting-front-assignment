@@ -8,6 +8,7 @@ import Loading from "./Loading";
 import { getRandomInt } from "../utils";
 import { useNavigate } from "react-router-dom";
 import { QuestionItem } from "../components";
+import Empty from "./Empty";
 
 const Question = (): ReactElement => {
   const [settings, setSettings] = useRecoilState<SettingType>(settingState);
@@ -58,12 +59,13 @@ const Question = (): ReactElement => {
   }, [score]);
 
   if (loading) { return (<Loading />); }
+  if (response.response_code === 1) { return (<Empty />)}
 
   return (
     <Box>
       <QuestionItem 
         questionIndex={questionIndex}
-        question={response?.results[questionIndex].question}
+        question={response?.results[questionIndex]?.question}
         options={options}
         onClickAnswer={handleClickAnswer}
       />      
