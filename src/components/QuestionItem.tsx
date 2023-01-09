@@ -9,7 +9,6 @@ interface Props {
   question: string;
   options: Array<string>;
   onClickAnswer: (e: any) => void;
-  score: number;
 }
 
 const QuestionItem = ({

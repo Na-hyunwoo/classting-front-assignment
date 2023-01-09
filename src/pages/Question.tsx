@@ -9,8 +9,6 @@ import { getRandomInt } from "../utils";
 import { useNavigate } from "react-router-dom";
 import { QuestionItem } from "../components";
 
-
-
 const Question = (): ReactElement => {
   const [settings, setSettings] = useRecoilState<SettingType>(settingState);
   
@@ -20,13 +18,12 @@ const Question = (): ReactElement => {
     .concat(`&difficulty=${settings.difficulty}`)
     .concat(`&type=${settings.question_type}`);
 
-  const { response, loading } = useAxios({ url: apiUrl });
-
   const [questionIndex, setQuestionIndex] = useState<number>(0);
   const [options, setOptions] = useState<Array<string>>([]);
   const [score, setScore] = useState<number>(0);
 
   const navigate = useNavigate();
+  const { response, loading } = useAxios({ url: apiUrl });
 
   // TODO: type 변경
   const handleClickAnswer = (e: any) => {
@@ -69,7 +66,6 @@ const Question = (): ReactElement => {
         question={response?.results[questionIndex].question}
         options={options}
         onClickAnswer={handleClickAnswer}
-        score={score}
       />      
     </Box>
   );
