@@ -30,14 +30,12 @@ const Question = (): ReactElement => {
   const navigate = useNavigate();
   const { response, loading } = useAxios({ url: apiUrl });
 
-  // TODO: type 변경
   const handleClickAnswer = (option: string) => {
     setSelected(option);
   };
 
   const handleClickNext = () => {
     const question = response.results[questionIndex];
-    console.log(selected, question.correct_answer);
 
     if (selected === question.correct_answer) {
       setIsAnswer(true);
@@ -51,6 +49,7 @@ const Question = (): ReactElement => {
     if (questionIndex + 1 < response.results.length) {
       setModalOpen(true);
     } else {
+      window.localStorage.setItem("endTime", JSON.stringify(Date.now()));
       navigate(`/result`);
     }
   };
@@ -58,7 +57,7 @@ const Question = (): ReactElement => {
   useEffect(() => {
     if (modalOpen) {
       const timer = setTimeout(
-        () => {setModalOpen(false)}
+        () => { setModalOpen(false) }
         , 1000);
 
       setQuestionIndex(questionIndex + 1);

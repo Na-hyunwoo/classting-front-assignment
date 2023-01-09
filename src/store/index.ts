@@ -6,6 +6,6 @@ export const settingState = atom({
     category: "",
     difficulty: "",
     question_type: "",
-    number_of_question: 10,
+    number_of_question: 0,
   }
 });

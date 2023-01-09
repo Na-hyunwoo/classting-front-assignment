@@ -14,6 +14,7 @@ const Setting = (): ReactElement => {
   // TODO: event type 수정하기
   const handleSubmit = (e: any) => {
     e.preventDefault();
+    window.localStorage.setItem("startTime", JSON.stringify(Date.now()));
     navigate("/question");
   };
 

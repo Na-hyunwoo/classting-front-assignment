@@ -10,5 +10,5 @@ export const TYPES = [
 ]
 
 export const getRandomInt = (max: number) => {
-  return Math.floor(Math.random() * max);
+  return ~~(Math.random() * max);
 };
