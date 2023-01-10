@@ -1,5 +1,5 @@
 import React, { ReactElement } from "react";
-import { Button, Typography } from "@mui/material";
+import { Button, Container, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { useNavigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
@@ -46,7 +46,7 @@ const Result = (): ReactElement => {
           fill="#8884d8"
           dataKey="value"
         >
-          {data.map((entry, index) => (
+          {data.map((_, index) => (
             <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
           ))}
         </Pie>
@@ -66,10 +66,17 @@ const Result = (): ReactElement => {
         fontWeight="bold" 
         mb={3}
       >총 걸린 시간: {viewOfTime}</Typography>
-      <Button 
-        onClick={() => {navigate("/")}} 
-        variant="outlined"
-      >Back To Home</Button>
+      <div style={{display: "flex", flexDirection: "column", gap: "10px"}}>
+        <Button 
+          variant={"contained"}
+          size="large"
+          onClick={() => { navigate("/reviewNote") }}
+        >오답 노트</Button>   
+        <Button 
+          onClick={() => { navigate("/") }} 
+          variant="outlined"
+        >Back To Home</Button>
+      </div>      
     </Box>
   );
 };

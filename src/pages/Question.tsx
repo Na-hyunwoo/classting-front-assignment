@@ -34,6 +34,19 @@ const Question = (): ReactElement => {
     setSelected(option);
   };
 
+  const updateReviewNotes = () => {
+    const incorrectProblem = {
+      question: response?.results[questionIndex]?.question,
+      selected: selected,
+      answer: response?.results[questionIndex]?.correct_answer,
+    };
+
+    const reviewNotes = JSON.parse(window.localStorage.getItem("reviewNotes")?? "[]");
+    reviewNotes.unshift(incorrectProblem);
+    
+    window.localStorage.setItem("reviewNotes", JSON.stringify(reviewNotes));
+  }
+
   const handleClickNext = () => {
     const question = response.results[questionIndex];
 
@@ -42,6 +55,7 @@ const Question = (): ReactElement => {
       setScore(prev => prev + 1);
     } else {
       setIsAnswer(false);
+      updateReviewNotes();
     }
 
     setSelected("");

@@ -36,7 +36,7 @@ const QuestionItem = ({
         </Box>
       ))}
       {selected.length > 0 && <Box mt={10} textAlign={"right"}>
-        <Button onClick={onClickNext}>{`Next ->`}</Button>
+        <Button variant={"outlined"} onClick={onClickNext}>{`Next ->`}</Button>
       </Box>}
     </>
   );
