@@ -4,7 +4,9 @@ import { Box } from "@mui/system";
 import { useNavigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { settingState } from "../store";
-import { Pie, PieChart } from "recharts";
+import { Cell, Pie, PieChart } from "recharts";
+import { CustomizedLabel } from "../components";
+import { COLORS } from "../styles";
 
 const Result = (): ReactElement => {
 
@@ -32,8 +34,23 @@ const Result = (): ReactElement => {
   ];
 
   return (
-    <Box mt={20}>
-
+    <Box>
+      <PieChart width={400} height={350}>
+        <Pie
+          data={data}
+          cx={275}
+          cy={200}
+          labelLine={false}
+          label={CustomizedLabel}
+          outerRadius={80}
+          fill="#8884d8"
+          dataKey="value"
+        >
+          {data.map((entry, index) => (
+            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+          ))}
+        </Pie>
+      </PieChart>
       <Typography 
         variant="h5" 
         fontWeight="bold" 
@@ -43,7 +60,7 @@ const Result = (): ReactElement => {
         variant="h5" 
         fontWeight="bold" 
         mb={3}
-      >틀린 문제 개수: {Number(setting.number_of_question) - Number(score)}</Typography>
+      >틀린 문제 개수: {wrong}</Typography>
       <Typography 
         variant="h5" 
         fontWeight="bold" 

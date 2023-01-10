@@ -22,7 +22,7 @@ const Setting = (): ReactElement => {
   if (error) { return (<Error />) }
 
   return (
-    <div>
+    <Box mt={10}>
       <Typography variant="h2" fontWeight="bold">Quiz App</Typography>
       <form onSubmit={handleSubmit}>
         <SelectField options={response.trivia_categories} label="Category"/>
@@ -35,7 +35,7 @@ const Setting = (): ReactElement => {
           </Button>
         </Box>
       </form>
-    </div>
+    </Box>
   );
 };
 

@@ -88,7 +88,7 @@ const Question = (): ReactElement => {
   if (response.response_code === 1) { return (<Empty />)}
 
   return (
-    <Box>
+    <Box mt={10}>
       <QuestionItem 
         questionIndex={questionIndex}
         question={response?.results[questionIndex]?.question}
