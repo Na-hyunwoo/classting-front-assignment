@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { Box, Container } from '@mui/system';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Question, Result, ReviewNote, Setting } from "./pages";
 
-function App() {
+const App = (): ReactElement => {
   return (
     <Router>
       <Container maxWidth="sm">

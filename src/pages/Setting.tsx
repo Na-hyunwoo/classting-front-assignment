@@ -25,12 +25,22 @@ const Setting = (): ReactElement => {
     <Box mt={10}>
       <Typography variant="h2" fontWeight="bold">Quiz App</Typography>
       <form onSubmit={handleSubmit}>
-        <SelectField options={response.trivia_categories} label="Category"/>
-        <SelectField options={DIFFICULTIES} label="Difficulty"/>
-        <SelectField options={TYPES} label="Type"/>
+        <SelectField 
+          options={response.trivia_categories} 
+          label="Category"/>
+        <SelectField 
+          options={DIFFICULTIES} 
+          label="Difficulty"/>
+        <SelectField 
+          options={TYPES} 
+          label="Type"/>
         <FormTextField />
         <Box mt={3} width="100%">
-          <Button fullWidth variant="contained" type="submit">
+          <Button 
+            fullWidth 
+            variant="contained" 
+            type="submit"
+            role="takeQuiz">
             퀴즈 풀기
           </Button>
         </Box>

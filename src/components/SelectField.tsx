@@ -48,7 +48,7 @@ const SelectField = ({ label, options } : Props): ReactElement => {
 
   return (
     <Box mt={3} width="100%">
-      <FormControl size="small" fullWidth>
+      <FormControl size="small" fullWidth role={label}>
         <InputLabel>{label}</InputLabel>
         <Select required value={value} label={label} onChange={handleChange}>
           {options.map(({id, name}: OptionType) => (
