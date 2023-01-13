@@ -1,6 +1,6 @@
-import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import { FormControl, InputLabel, MenuItem, NativeSelect, Select } from "@mui/material";
 import { Box } from "@mui/system";
-import React, { ReactElement, useState } from "react";
+import React, { ReactElement, useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import { settingState } from "../store";
 
@@ -47,16 +47,33 @@ const SelectField = ({ label, options } : Props): ReactElement => {
   };
 
   return (
-    <Box mt={3} width="100%">
-      <FormControl size="small" fullWidth role={label}>
-        <InputLabel>{label}</InputLabel>
-        <Select required value={value} label={label} onChange={handleChange}>
+    <Box mt={6} width="100%">
+      <FormControl size="small" fullWidth>
+        <h3
+          style={{position: "absolute", margin: "0px", top: "-30px"}}
+        >
+          <label 
+            htmlFor={label}
+          >            
+            {label}
+          </label>
+        </h3>        
+        <NativeSelect 
+          required 
+          value={value} 
+          onChange={handleChange} 
+          inputProps={{
+            name: label,
+            id: label,
+          }}
+          role={label}
+          >
           {options.map(({id, name}: OptionType) => (
-            <MenuItem key={id} value={id}>
+            <option key={id} value={id}>
               {name}
-            </MenuItem>
+            </option>
           ))}
-        </Select>
+        </NativeSelect>
       </FormControl>
     </Box>
   );

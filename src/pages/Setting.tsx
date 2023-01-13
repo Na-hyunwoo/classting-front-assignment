@@ -23,7 +23,7 @@ const Setting = (): ReactElement => {
 
   return (
     <Box mt={10}>
-      <Typography variant="h2" fontWeight="bold">Quiz App</Typography>
+      <Typography variant="h2" fontWeight="bold" role="title">Quiz App</Typography>
       <form onSubmit={handleSubmit}>
         <SelectField 
           options={response.trivia_categories} 

@@ -8,8 +8,8 @@ import Loading from "./Loading";
 import { getRandomInt } from "../utils";
 import { useNavigate } from "react-router-dom";
 import { Modal, QuestionItem } from "../components";
-import Empty from "./Empty";
 import { AnimatePresence } from "framer-motion";
+import { Empty } from "./";
 
 const Question = (): ReactElement => {
   const [settings, setSettings] = useRecoilState<SettingType>(settingState);
@@ -28,7 +28,7 @@ const Question = (): ReactElement => {
   const [isAnswer, setIsAnswer] = useState<boolean>(false);
 
   const navigate = useNavigate();
-  const { response, loading } = useAxios({ url: apiUrl });
+  const { response, loading, error } = useAxios({ url: apiUrl });
 
   const handleClickAnswer = (option: string) => {
     setSelected(option);

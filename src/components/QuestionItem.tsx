@@ -2,9 +2,7 @@ import React, { ReactElement } from "react";
 import { Button, Typography } from "@mui/material";
 import { decode } from "html-entities";
 import { Box } from "@mui/system";
-import { motion } from "framer-motion";
 
-// TODO: type 변경하기 
 interface Props {
   questionIndex: number;
   question: string;
@@ -24,9 +22,8 @@ const QuestionItem = ({
 }: Props): ReactElement => {
   return (
     <>
-      <Typography variant="h4">Questions {questionIndex + 1}</Typography>
+      <Typography variant="h4" role="questionTitle">Questions {questionIndex + 1}</Typography>
       <Typography mt={5}>{decode(question)}</Typography>
-      {/* TODO: type 변경하기 */}
       {options.map((option: string) => (
         <Box mt={2} key={option}>
           <Button 

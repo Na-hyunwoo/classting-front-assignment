@@ -5,7 +5,7 @@ import { Box } from '@mui/system'
 const Loading = () => {
   return (
     <Box mt={20}>
-      <CircularProgress />
+      <CircularProgress role="loading"/>
     </Box>
   )
 }
