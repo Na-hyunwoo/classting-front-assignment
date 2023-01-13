@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { ReactElement, useEffect, useState } from "react";
 import { Box } from "@mui/system";
 import { useRecoilState } from "recoil";
@@ -28,7 +29,7 @@ const Question = (): ReactElement => {
   const [isAnswer, setIsAnswer] = useState<boolean>(false);
 
   const navigate = useNavigate();
-  const { response, loading, error } = useAxios({ url: apiUrl });
+  const { response, loading } = useAxios({ url: apiUrl });
   
   const handleClickAnswer = (option: string) => {
     setSelected(option);
