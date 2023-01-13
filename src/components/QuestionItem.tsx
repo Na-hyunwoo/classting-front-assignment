@@ -29,6 +29,7 @@ const QuestionItem = ({
           <Button 
             onClick={() => onClickAnswer(option)} 
             variant={selected === option ? "contained" : "outlined"}
+            role="button"
           >{decode(option)}</Button>
         </Box>
       ))}
