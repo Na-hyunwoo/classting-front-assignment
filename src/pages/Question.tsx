@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { ReactElement, useEffect, useState } from "react";
 import { Box } from "@mui/system";
