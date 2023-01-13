@@ -1,6 +1,6 @@
-import { FormControl, InputLabel, MenuItem, NativeSelect, Select } from "@mui/material";
+import { FormControl, NativeSelect } from "@mui/material";
 import { Box } from "@mui/system";
-import React, { ReactElement, useEffect, useState } from "react";
+import React, { ReactElement, useState } from "react";
 import { useRecoilState } from "recoil";
 import { settingState } from "../store";
 

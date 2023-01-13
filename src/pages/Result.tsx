@@ -1,5 +1,5 @@
 import React, { ReactElement } from "react";
-import { Button, Container, Typography } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { useNavigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
