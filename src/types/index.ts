@@ -2,5 +2,5 @@ export interface SettingType {
   category: string;
   difficulty: string;
   question_type: string;
-  number_of_question: number;
+  number_of_question: string;
 };

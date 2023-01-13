@@ -29,7 +29,7 @@ const Question = (): ReactElement => {
 
   const navigate = useNavigate();
   const { response, loading, error } = useAxios({ url: apiUrl });
-
+  
   const handleClickAnswer = (option: string) => {
     setSelected(option);
   };
