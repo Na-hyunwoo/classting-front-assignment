@@ -28,8 +28,8 @@ const ReviewNote = () => {
         <Box key={problem.question} mt={10}>
           <Typography variant="h4">{`Question ${index + 1}`}</Typography>
           <Typography>{`${decode(problem.question)}`}</Typography>
-          <Typography sx={{color: COLORS[0]}} variant="h6">{`Your Answer: ${decode(problem.selected)}`}</Typography>
-          <Typography sx={{color: COLORS[1]}} variant="h6">{`Correct Answer: ${decode(problem.answer)}`}</Typography>
+          <Typography sx={{color: COLORS[1]}} variant="h6">{`Your Answer: ${decode(problem.selected)}`}</Typography>
+          <Typography sx={{color: COLORS[0]}} variant="h6">{`Correct Answer: ${decode(problem.answer)}`}</Typography>
         </Box>
       ))}
     </Box>
