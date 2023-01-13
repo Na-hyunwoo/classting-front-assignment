@@ -11,7 +11,6 @@ const Setting = (): ReactElement => {
   const { response, error, loading } = useAxios({ url: "/api_category.php" });
   const navigate = useNavigate()
 
-  // TODO: event type 수정하기
   const handleSubmit = (e: any) => {
     e.preventDefault();
     window.localStorage.setItem("startTime", JSON.stringify(Date.now()));

@@ -6,7 +6,6 @@ interface Props {
 };
 
 const useAxios = ({ url } : Props) => {
-  // TODO: type 적기
   const [response, setResponse] = useState<any>([]);
   const [error, setError] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(true);

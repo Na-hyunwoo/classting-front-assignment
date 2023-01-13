@@ -19,7 +19,6 @@ const SelectField = ({ label, options } : Props): ReactElement => {
   const [value, setValue] = useState<string>("");
   const [settings, setSettings] = useRecoilState(settingState);
 
-  // TODO: type 재정의하기 
   const handleChange = (e: any) => {
     setValue(e.target.value);
     switch(label) {

@@ -1,5 +1,3 @@
-// TODO: type 변경
-
 const RADIAN = Math.PI / 180;
 
 interface Props { 
